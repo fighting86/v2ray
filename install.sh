@@ -20,22 +20,10 @@ cmd="apt-get"
 sys_bit=$(uname -m)
 
 case $sys_bit in
-# i[36]86)
-# 	v2ray_bit="32"
-# 	caddy_arch="386"
-# 	;;
 'amd64' | x86_64)
 	v2ray_bit="64"
 	caddy_arch="amd64"
 	;;
-# *armv6*)
-# 	v2ray_bit="arm32-v6"
-# 	caddy_arch="arm6"
-# 	;;
-# *armv7*)
-# 	v2ray_bit="arm32-v7a"
-# 	caddy_arch="arm7"
-# 	;;
 *aarch64* | *armv8*)
 	v2ray_bit="arm64-v8a"
 	caddy_arch="arm64"
@@ -71,8 +59,8 @@ fi
 uuid=$(cat /proc/sys/kernel/random/uuid)
 old_id="e55c8d17-2cf3-b21a-bcf1-eeacb011ed79"
 v2ray_server_config="/etc/v2ray/config.json"
-v2ray_client_config="/etc/v2ray/233blog_v2ray_config.json"
-backup="/etc/v2ray/233blog_v2ray_backup.conf"
+v2ray_client_config="/etc/v2ray/fighting86_v2ray_config.json"
+backup="/etc/v2ray/fighting86_v2ray_backup.conf"
 _v2ray_sh="/usr/local/sbin/v2ray"
 systemd=true
 # _test=true
@@ -120,7 +108,7 @@ ciphers=(
 )
 
 _load() {
-	local _dir="/etc/v2ray/233boy/v2ray/src/"
+	local _dir="/etc/v2ray/fighting86/v2ray/src/"
 	. "${_dir}$@"
 }
 _sys_timezone() {
@@ -329,7 +317,7 @@ tls_config() {
 	while :; do
 		echo
 		echo -e "请输入一个 ${magenta}正确的域名${none}，一定一定一定要正确，不！能！出！错！"
-		read -p "(例如：233blog.com): " domain
+		read -p "(例如：fighting86.com): " domain
 		[ -z "$domain" ] && error && continue
 		echo
 		echo
@@ -453,9 +441,9 @@ path_config_ask() {
 path_config() {
 	echo
 	while :; do
-		echo -e "请输入想要 ${magenta} 用来分流的路径 $none , 例如 /233blog , 那么只需要输入 233blog 即可"
-		read -p "$(echo -e "(默认: [${cyan}233blog$none]):")" path
-		[[ -z $path ]] && path="233blog"
+		echo -e "请输入想要 ${magenta} 用来分流的路径 $none , 例如 /fighting86 , 那么只需要输入 fighting86 即可"
+		read -p "$(echo -e "(默认: [${cyan}fighting86$none]):")" path
+		[[ -z $path ]] && path="fighting86"
 
 		case $path in
 		*[/$]*)
@@ -617,8 +605,8 @@ shadowsocks_password_config() {
 
 	while :; do
 		echo -e "请输入 "$yellow"Shadowsocks"$none" 密码"
-		read -p "$(echo -e "(默认密码: ${cyan}233blog.com$none)"): " sspass
-		[ -z "$sspass" ] && sspass="233blog.com"
+		read -p "$(echo -e "(默认密码: ${cyan}fighting86.com$none)"): " sspass
+		[ -z "$sspass" ] && sspass="fighting86.com"
 		case $sspass in
 		*[/$]*)
 			echo
@@ -794,20 +782,18 @@ install_v2ray() {
 			echo
 			echo -e "$red 哎呀呀...安装失败了咯...$none"
 			echo
-			echo -e " 请确保你有完整的上传 233v2.com 的 V2Ray 一键安装脚本 & 管理脚本到当前 ${green}$(pwd) $none目录下"
-			echo
 			exit 1
 		fi
-		mkdir -p /etc/v2ray/233boy/v2ray
-		cp -rf $(pwd)/* /etc/v2ray/233boy/v2ray
+		mkdir -p /etc/v2ray/fighting86/v2ray
+		cp -rf $(pwd)/* /etc/v2ray/fighting86/v2ray
 	else
 		pushd /tmp
-		git clone https://github.com/233boy/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
+		git clone https://github.com/fighting86/v2ray -b "$_gitbranch" /etc/v2ray/fighting86/v2ray --depth=1
 		popd
 
 	fi
 
-	if [[ ! -d /etc/v2ray/233boy/v2ray ]]; then
+	if [[ ! -d /etc/v2ray/fighting86/v2ray ]]; then
 		echo
 		echo -e "$red 哎呀呀...克隆脚本仓库出错了...$none"
 		echo
@@ -824,8 +810,8 @@ install_v2ray() {
 }
 
 config() {
-	cp -f /etc/v2ray/233boy/v2ray/config/backup.conf $backup
-	cp -f /etc/v2ray/233boy/v2ray/v2ray.sh $_v2ray_sh
+	cp -f /etc/v2ray/fighting86/v2ray/config/backup.conf $backup
+	cp -f /etc/v2ray/fighting86/v2ray/v2ray.sh $_v2ray_sh
 	chmod +x $_v2ray_sh
 
 	v2ray_id=$uuid
@@ -861,18 +847,18 @@ config() {
 }
 
 backup_config() {
-	sed -i "18s/=1/=$v2ray_transport/; 21s/=2333/=$v2ray_port/; 24s/=$old_id/=$uuid/" $backup
+	sed -i "18s/=1/=$v2ray_transport/; 21s/=8686/=$v2ray_port/; 24s/=$old_id/=$uuid/" $backup
 	if [[ $v2ray_transport -ge 18 && $v2ray_transport -ne 33 ]]; then
 		sed -i "30s/=10000/=$v2ray_dynamic_port_start_input/; 33s/=20000/=$v2ray_dynamic_port_end_input/" $backup
 	fi
 	if [[ $shadowsocks ]]; then
-		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=233blog.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
+		sed -i "42s/=/=true/; 45s/=6666/=$ssport/; 48s/=fighting86.com/=$sspass/; 51s/=chacha20-ietf/=$ssciphers/" $backup
 	fi
-	[[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && sed -i "36s/=233blog.com/=$domain/" $backup
+	[[ $v2ray_transport == [45] || $v2ray_transport == 33 ]] && sed -i "36s/=fighting86.com/=$domain/" $backup
 	[[ $caddy ]] && sed -i "39s/=/=true/" $backup
 	[[ $ban_ad ]] && sed -i "54s/=/=true/" $backup
 	if [[ $is_path ]]; then
-		sed -i "57s/=/=true/; 60s/=233blog/=$path/" $backup
+		sed -i "57s/=/=true/; 60s/=fighting86/=$path/" $backup
 		sed -i "63s#=https://liyafly.com#=$proxy_site#" $backup
 	fi
 }
@@ -919,14 +905,14 @@ show_config_info() {
 }
 
 install() {
-	if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/233boy/v2ray ]]; then
+	if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/fighting86/v2ray ]]; then
 		echo
 		echo " 大佬...你已经安装 V2Ray 啦...无需重新安装"
 		echo
 		echo -e " $yellow输入 ${cyan}v2ray${none} $yellow即可管理 V2Ray${none}"
 		echo
 		exit 1
-	elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/233boy/v2ray ]]; then
+	elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/fighting86_v2ray_backup.txt && -d /etc/v2ray/fighting86/v2ray ]]; then
 		echo
 		echo "  如果你需要继续安装.. 请先卸载旧版本"
 		echo
@@ -961,7 +947,7 @@ install() {
 }
 uninstall() {
 
-	if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/233boy/v2ray ]]; then
+	if [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f $backup && -d /etc/v2ray/fighting86/v2ray ]]; then
 		. $backup
 		if [[ $mark ]]; then
 			_load uninstall.sh
@@ -971,7 +957,7 @@ uninstall() {
 			echo
 		fi
 
-	elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/233blog_v2ray_backup.txt && -d /etc/v2ray/233boy/v2ray ]]; then
+	elif [[ -f /usr/bin/v2ray/v2ray && -f /etc/v2ray/config.json ]] && [[ -f /etc/v2ray/fighting86_v2ray_backup.txt && -d /etc/v2ray/fighting86/v2ray ]]; then
 		echo
 		echo -e " $yellow输入 ${cyan}v2ray uninstall${none} $yellow即可卸载${none}"
 		echo
@@ -979,7 +965,6 @@ uninstall() {
 		echo -e "
 		$red 大胸弟...你貌似毛有安装 V2Ray ....卸载个鸡鸡哦...$none
 
-		备注...仅支持卸载使用我 (233v2.com) 提供的 V2Ray 一键安装脚本
 		" && exit 1
 	fi
 
@@ -1013,11 +998,7 @@ esac
 clear
 while :; do
 	echo
-	echo "........... V2Ray 一键安装脚本 & 管理脚本 by 233v2.com .........."
-	echo
-	echo "帮助说明: https://233v2.com/post/1/"
-	echo
-	echo "搭建教程: https://233v2.com/post/2/"
+	echo "........... V2Ray 一键安装脚本 & 管理脚本 by 868v2.com .........."
 	echo
 	echo " 1. 安装"
 	echo

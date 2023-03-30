@@ -22,93 +22,93 @@ if [[ $v2ray_transport == 17 ]]; then
 fi
 
 cat >$backup <<-EOF
-# -----------------------------------
-# 警告...请不要修改或删除这个文件...谢谢
-# 警告...请不要修改或删除这个文件...谢谢
-# 警告...请不要修改或删除这个文件...谢谢
-# -----------------------------------
+	# -----------------------------------
+	# 警告...请不要修改或删除这个文件...谢谢
+	# 警告...请不要修改或删除这个文件...谢谢
+	# 警告...请不要修改或删除这个文件...谢谢
+	# -----------------------------------
 
-# ---- 再次提醒 ----
-# 大胸弟...如果你看到了这个...记得不要修改或更改这个文件
+	# ---- 再次提醒 ----
+	# 大胸弟...如果你看到了这个...记得不要修改或更改这个文件
 
-# ---- 说明 ----
-# 嗯……这个文件呢，是用来备份一些设置的
-#
-mark=v3
-#
-#
+	# ---- 说明 ----
+	# 嗯……这个文件呢，是用来备份一些设置的
+	#
+	mark=v3
+	#
+	#
 
-# ---- V2Ray 传输协议 -----
-v2ray_transport=$_transport
+	# ---- V2Ray 传输协议 -----
+	v2ray_transport=$_transport
 
-#---- V2Ray 端口 -----
-v2ray_port=$v2ray_port
+	#---- V2Ray 端口 -----
+	v2ray_port=$v2ray_port
 
-#---- UUID -----
-v2ray_id=$v2ray_id
+	#---- UUID -----
+	v2ray_id=$v2ray_id
 
-#---- alterId -----
-alterId=$alterId
+	#---- alterId -----
+	alterId=$alterId
 
-#---- V2Ray 动态端口开始 -----
-v2ray_dynamicPort_start=$v2ray_dynamicPort_start
+	#---- V2Ray 动态端口开始 -----
+	v2ray_dynamicPort_start=$v2ray_dynamicPort_start
 
-#---- V2Ray 动态端口结束 -----
-v2ray_dynamicPort_end=$v2ray_dynamicPort_end
+	#---- V2Ray 动态端口结束 -----
+	v2ray_dynamicPort_end=$v2ray_dynamicPort_end
 
-#---- 域名 -----
-domain=$domain
+	#---- 域名 -----
+	domain=$domain
 
-#---- caddy -----
-caddy=$caddy_status
+	#---- caddy -----
+	caddy=$caddy_status
 
-#---- Shadowsocks -----
-shadowsocks=$shadowsocks_status
+	#---- Shadowsocks -----
+	shadowsocks=$shadowsocks_status
 
-#---- Shadowsocks 端口 -----
-ssport=$ssport
+	#---- Shadowsocks 端口 -----
+	ssport=$ssport
 
-#---- Shadowsocks 密码 -----
-sspass=$sspass
+	#---- Shadowsocks 密码 -----
+	sspass=$sspass
 
-#---- Shadowsocks 加密协议 -----
-ssciphers=$ssciphers
+	#---- Shadowsocks 加密协议 -----
+	ssciphers=$ssciphers
 
-#---- 屏蔽广告 -----
-ban_ad=$blocked_ad_status
+	#---- 屏蔽广告 -----
+	ban_ad=$blocked_ad_status
 
-#---- 网站伪装 -----
-path_status=$path_status
+	#---- 网站伪装 -----
+	path_status=$path_status
 
-#---- 伪装的路径 -----
-path=$path
+	#---- 伪装的路径 -----
+	path=$path
 
-#---- 伪装的网址 -----
-proxy_site=$proxy_site
+	#---- 伪装的网址 -----
+	proxy_site=$proxy_site
 
-#---- Socks -----
-socks=
+	#---- Socks -----
+	socks=
 
-#---- Socks 端口-----
-socks_port=233
+	#---- Socks 端口-----
+	socks_port=868
 
-#---- Socks 用户名 -----
-socks_username=233blog
+	#---- Socks 用户名 -----
+	socks_username=fighting86blog
 
-#---- Socks 密码 -----
-socks_userpass=233blog.com
+	#---- Socks 密码 -----
+	socks_userpass=fighting86.com
 
-#---- MTProto -----
-mtproto=
+	#---- MTProto -----
+	mtproto=
 
-#---- MTProto 端口-----
-mtproto_port=233
+	#---- MTProto 端口-----
+	mtproto_port=868
 
-#---- MTProto 用户密钥 -----
-mtproto_secret=lalala
+	#---- MTProto 用户密钥 -----
+	mtproto_secret=lalala
 
-#---- 屏蔽 BT -----
-ban_bt=true
+	#---- 屏蔽 BT -----
+	ban_bt=true
 EOF
 
 . $backup

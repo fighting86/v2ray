@@ -5,12 +5,12 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "233blog.com",
-                        "port": 2333,
+                        "address": "fighting86.com",
+                        "port": 8686,
                         "users": [
                             {
                                 "id": "e55c8d17-2cf3-b21a-bcf1-eeacb011ed79",
-                                "alterId": 233,
+                                "alterId": 868,
                                 "security": "auto"
                             }
                         ]
@@ -38,9 +38,9 @@
             "tag": "direct"
         },
         {
-			"protocol": "blackhole",
-			"settings": {},
-			"tag": "blocked"
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
         },
         {
             "protocol": "dns",
@@ -52,13 +52,16 @@
             "port": "1099",
             "protocol": "dokodemo-door",
             "settings": {
-              "network": "tcp,udp",
-              "timeout": 0,
-              "followRedirect": true
+                "network": "tcp,udp",
+                "timeout": 0,
+                "followRedirect": true
             },
             "sniffing": {
-              "enabled": true,
-              "destOverride": ["http", "tls"]
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
@@ -73,7 +76,7 @@
             }
         },
         {
-            "port": 2333,
+            "port": 8686,
             "protocol": "socks",
             "settings": {
                 "auth": "noauth",
@@ -95,17 +98,17 @@
                 "address": "119.29.29.29",
                 "port": 53,
                 "domains": [
-                  "geosite:cn"
+                    "geosite:cn"
                 ],
                 "expectIPs": [
-                  "geoip:cn"
+                    "geoip:cn"
                 ]
-              },
-              {
+            },
+            {
                 "address": "1.1.1.1",
                 "port": 53,
                 "domains": [
-                  "geosite:geolocation-!cn"
+                    "geosite:geolocation-!cn"
                 ]
             },
             "8.8.8.8",
@@ -113,7 +116,7 @@
         ]
     },
     "routing": {
-        "domainStrategy": "IPOnDemand",	
+        "domainStrategy": "IPOnDemand",
         "rules": [
             {
                 "type": "field",
@@ -123,12 +126,12 @@
                 "outboundTag": "dns-out"
             },
             {
-				"type": "field",
-				"ip": [
-					"geoip:private"
-				],
-				"outboundTag": "blocked"
-			},
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "blocked"
+            },
             {
                 "type": "field",
                 "ip": [

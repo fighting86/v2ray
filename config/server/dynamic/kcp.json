@@ -6,14 +6,14 @@
 	},
 	"inbounds": [
 		{
-			"port": 2333,
+			"port": 8686,
 			"protocol": "vmess",
 			"settings": {
 				"clients": [
 					{
 						"id": "e55c8d17-2cf3-b21a-bcf1-eeacb011ed79",
 						"level": 1,
-						"alterId": 233
+						"alterId": 868
 					}
 				],
 				"detour": {
@@ -21,12 +21,12 @@
 				}
 			},
 			"streamSettings": {
-                "network": "kcp",
-                "kcpSettings": {
-                    "header": {
-                        "type": "none"
-                    }
-                }
+				"network": "kcp",
+				"kcpSettings": {
+					"header": {
+						"type": "none"
+					}
+				}
 			},
 			"sniffing": {
 				"enabled": true,
@@ -36,30 +36,30 @@
 				]
 			}
 		},
-        {
-            "protocol": "vmess",
-            "port": "10000-20000",
-            "tag": "dynamic",
-            "settings": {
-                "default": {
-                    "level": 1,
-                    "alterId": 32
-                }
-            },
-            "allocate": {
-                "strategy": "random",
-                "concurrency": 2,
-                "refresh": 5
-            },
-            "streamSettings": {
-                "network": "kcp",
-                "kcpSettings": {
-                    "header": {
-                        "type": "none"
-                    }
-                }
-            }
-        }
+		{
+			"protocol": "vmess",
+			"port": "10000-20000",
+			"tag": "dynamic",
+			"settings": {
+				"default": {
+					"level": 1,
+					"alterId": 32
+				}
+			},
+			"allocate": {
+				"strategy": "random",
+				"concurrency": 2,
+				"refresh": 5
+			},
+			"streamSettings": {
+				"network": "kcp",
+				"kcpSettings": {
+					"header": {
+						"type": "none"
+					}
+				}
+			}
+		}
 		//include_ss
 		//include_socks
 		//include_mtproto
@@ -78,7 +78,7 @@
 			"protocol": "blackhole",
 			"settings": {},
 			"tag": "blocked"
-        }
+		}
 		//include_out_config
 		//
 	],
@@ -93,13 +93,13 @@
 	"routing": {
 		"domainStrategy": "IPOnDemand",
 		"rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "blocked"
-            }
+			{
+				"type": "field",
+				"ip": [
+					"geoip:private"
+				],
+				"outboundTag": "blocked"
+			}
 			//include_ban_xx
 			//include_ban_bt
 			//include_ban_ad
@@ -109,9 +109,9 @@
 	},
 	"transport": {
 		"kcpSettings": {
-            "uplinkCapacity": 100,
-            "downlinkCapacity": 100,
-            "congestion": true
-        }
+			"uplinkCapacity": 100,
+			"downlinkCapacity": 100,
+			"congestion": true
+		}
 	}
 }

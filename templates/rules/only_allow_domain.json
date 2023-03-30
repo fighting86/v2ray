@@ -2,7 +2,7 @@
     "type": "field",
     "domain": [
         "domain:google.com",
-        "domain:github.com", 
+        "domain:github.com",
         "youtube.com"
     ],
     "outboundTag": "direct" // don't change this tag

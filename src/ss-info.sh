@@ -1,6 +1,6 @@
 [[ -z $ip ]] && get_ip
 if [[ $shadowsocks ]]; then
-	local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64 -w 0)#233v2.com_ss_${ip}"
+	local ss="ss://$(echo -n "${ssciphers}:${sspass}@${ip}:${ssport}" | base64 -w 0)#868v2.com_ss_${ip}"
 	echo
 	echo "---------- Shadowsocks 配置信息 -------------"
 	echo
@@ -16,7 +16,7 @@ if [[ $shadowsocks ]]; then
 	echo
 	echo -e " 备注: $red Shadowsocks Win 4.0.6 $none 客户端可能无法识别该 SS 链接"
 	echo
-	echo -e "提示: 输入 $cyan v2ray ssqr $none 可生成 Shadowsocks 二维码链接"	
+	echo -e "提示: 输入 $cyan v2ray ssqr $none 可生成 Shadowsocks 二维码链接"
 	echo
 	echo -e "${yellow}免被墙..推荐使用JMS: ${cyan}https://getjms.com${none}"
 	echo

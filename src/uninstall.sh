@@ -112,10 +112,6 @@ if [[ $is_uninstall_v2ray && $is_uninstall_caddy ]]; then
 	echo
 	echo -e "$green V2Ray 卸载完成啦 ....$none"
 	echo
-	echo "如果你觉得这个脚本有哪些地方不够好的话...请告诉我"
-	echo
-	echo "反馈问题: https://github.com/233boy/v2ray/issues"
-	echo
 
 elif [[ $is_uninstall_v2ray ]]; then
 	pause
@@ -164,7 +160,5 @@ elif [[ $is_uninstall_v2ray ]]; then
 	echo -e "$green V2Ray 卸载完成啦 ....$none"
 	echo
 	echo "如果你觉得这个脚本有哪些地方不够好的话...请告诉我"
-	echo
-	echo "反馈问题: https://github.com/233boy/v2ray/issues"
 	echo
 fi
